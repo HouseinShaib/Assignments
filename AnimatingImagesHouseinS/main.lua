@@ -19,7 +19,6 @@ rotationSpeedYingyang = 5
 local backgroundImage = display.newImageRect("Images/background.jpg", 2048, 1536)
 
 -- Charcter image with width and height
-
 local spaceship = display.newImageRect("Images/spaceship.png", 450, 450)
 local yingyang = display.newImageRect("Images/yingyang.png", 300, 300)
 local pingu = display.newImageRect("Images/pingu.png", 250, 250)
