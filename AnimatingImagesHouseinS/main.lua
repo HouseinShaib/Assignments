@@ -51,10 +51,11 @@ end
 -- Function: Move Ship
 -- Input: This function accepts an event listener
 -- Output: None
--- Description: This function adds the scroll speed to the x-value of the ship
+-- Description: This function adds the scroll speed to the x-value of the ship and makes the ship fade out
 local function MoveShip(event)
 	-- Adds the scroll speed to the x-value of ship
 	spaceship.x = spaceship.x - scrollSpeedSpaceship
+	spaceship.alpha = spaceship.alpha - 0.001
 end
 
 -- Function: Move YingYang
