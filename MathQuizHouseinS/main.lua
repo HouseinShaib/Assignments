@@ -29,6 +29,8 @@ local randomOperator
 local numberPoints = 0
 local correctCounter
 local gameOver
+local mult = 10^(0.1)
+
 
 -- Varibles for the timer
 local totalSeconds = 16
@@ -57,36 +59,52 @@ local incorrectSoundChannel
 -----------------------------------------------------------------------------------------
 
 local function AskQuestion()
-	-- Generate 2 random numbers between a max and a min number
-	randomNumber1 = math.random(10, 20)
-	randomNumber2 = math.random(10, 20)
 	randomOperator = math.random(1, 4)
 
 	-- Create question in text object and sets the value of correctAnswer
 	if (randomOperator == 1) then
+		randomNumber1 = math.random(1, 20)
+		randomNumber2 = math.random(1, 20)
 		correctAnswer = randomNumber1 + randomNumber2
 		questionObject.text = (randomNumber1 .. "+" .. randomNumber2 .. "=")
 		questionObject.xScale = 2
 		questionObject.yScale = 2
 	elseif (randomOperator == 2) then
+		randomNumber1 = math.random(1, 20)
+		randomNumber2 = math.random(1, 20)
 		correctAnswer = randomNumber1 - randomNumber2
 		questionObject.text = (randomNumber1 .. "-" .. randomNumber2 .. "=")
 		questionObject.xScale = 2
 		questionObject.yScale = 2
-	if randomNumber2 > randomNumber1 then
+	if (randomNumber2 > randomNumber1) then
 		correctAnswer = randomNumber2 - randomNumber1
 		questionObject.text = (randomNumber2 .. "-" .. randomNumber1 .. "=")
 		questionObject.xScale = 2
 		questionObject.yScale = 2
-	--elseif (randomOperator == 3) then
-		--correctAnswer = 
+	end
+	elseif (randomOperator == 3) then
+			randomNumber1 = math.random(1, 100)
+			randomNumber2 = math.random(1, 100)
+  			correctAnswer =  math.floor(randomNumber1/randomNumber2 * mult + 0.5) / mult
+			questionObject.text = (randomNumber1 .. "/" .. randomNumber2 .. "=")
+			questionObject.xScale = 2
+			questionObject.yScale = 2
+			print(correctAnswer)
+		if (correctAnswer < 1) then
+			correctAnswer = math.floor(randomNumber2/randomNumber1 * mult + 0.5) / mult
+			questionObject.text = (randomNumber2 .. "/" .. randomNumber1 .. "=")
+			questionObject.xScale = 2
+			questionObject.yScale = 2
+			print(correctAnswer)
+		end
 	else
+		randomNumber1 = math.random(1, 10)
+		randomNumber2 = math.random(1, 10)
 		correctAnswer = randomNumber1 * randomNumber2
 		questionObject.text = (randomNumber1 .. "x" .. randomNumber2 .. "=")
 		questionObject.xScale = 2
 		questionObject.yScale = 2
 	end
-end
 end
 
 local function HideCorrect()
