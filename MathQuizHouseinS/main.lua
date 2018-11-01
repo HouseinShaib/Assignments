@@ -29,7 +29,7 @@ local randomOperator
 local numberPoints = 0
 local correctCounter
 local gameOver
-local mult = 10^(0.1)
+local mult = 10^(1)
 
 
 -- Varibles for the timer
@@ -91,8 +91,7 @@ local function AskQuestion()
 			questionObject.yScale = 2
 			print(correctAnswer)
 		if (correctAnswer < 1) then
-			correctAnswer = math.floor(randomNumber2/randomNumber1 * mult + 0.5) / mult
-			questionObject.text = (randomNumber2 .. "/" .. randomNumber1 .. "=")
+			correctAnswer = math.floor(randomNumber2/randomNumber1 * mult + 0.5) / mult		questionObject.text = (randomNumber2 .. "/" .. randomNumber1 .. "=")
 			questionObject.xScale = 2
 			questionObject.yScale = 2
 			print(correctAnswer)
