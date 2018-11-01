@@ -29,30 +29,32 @@ local randomOperator
 local numberPoints = 0
 local correctCounter
 local gameOver
+local win
 local mult = 10^(1)
 
-
 -- Varibles for the timer
-local totalSeconds = 16
-local secondsLeft = 16
+local totalSeconds = 10
+local secondsLeft = 10
 local clockText
 local countDownTimer
 
-local lives = 4
+local lives = 3
 local heart1
 local heart2
 local heart3
-local heart4
 
 -----------------------------------------------------------------------------------------
 -- SOUNDS
 -----------------------------------------------------------------------------------------
 
--- Correct sound
 local correctSound = audio.loadSound("Sounds/trains2.mp3")
 local correctSoundChannel
 local incorrectSound = audio.loadSound("Sounds/water1.mp3")
 local incorrectSoundChannel
+local gameOversound = audio.loadSound("Sounds/electronics018.mp3")
+local gameOversoundChannel
+local winSound = audio.loadSound("Sounds/comic003.mp3")
+local winSoundChannel
 
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
@@ -119,6 +121,7 @@ end
 local function UpdateHearts()
 		if (lives == 0) then
 		heart1.isVisible = false
+		gameOversoundChannel = audio.play(gameOversound)
 		clockText.isVisible = false
 		timer.cancel(countDownTimer)
 		gameOver.isVisible = true
@@ -127,10 +130,19 @@ local function UpdateHearts()
 		heart2.isVisible = false
 	elseif (lives == 2) then
 		heart3.isVisible = false
-	elseif (lives == 3) then
-		heart4.isVisible = false
 	end
 end
+
+local function UpdatePoints()
+	if (numberPoints == 5) then
+		win.isVisible = true
+		clockText.isVisible = false
+		timer.cancel(countDownTimer)
+		numericField.isVisible = false
+		winSoundChannel = audio.play(winSound)
+	end
+end
+
 
 local function UpdateTime()
 
@@ -170,6 +182,8 @@ local function NumericFieldListener(event)
 				correctObject.isVisible = true
 				secondsLeft = totalSeconds
 				timer.performWithDelay(2500, HideCorrect)
+				-- Calls the UpdatePoints function
+				UpdatePoints()
 				-- Creates number of correct answers
 				correctCounter.text = ("Correct: " .. numberPoints)
 			else
@@ -206,7 +220,7 @@ correctObject:setTextColor(0/255, 0/255, 0/255)
 correctObject.isVisible = false
 
 -- Create the incorrect text object and make it invisible
-incorrectObject = display.newText("Incorrect", display.contentWidth/2, display.contentHeight/3, nil, 55)
+incorrectObject = display.text("Incorrect, the answer was" .. correctAnswer --, display.contentWidth/2, display.contentHeight/3, nil, 55)
 incorrectObject:setTextColor(150/255, 0/255, 255/255)
 incorrectObject.isVisible = false
 
@@ -235,20 +249,20 @@ heart3 = display.newImageRect("Images/heart.png", 100, 100)
 heart3.x = display.contentWidth * 5 / 8
 heart3.y = display.contentHeight * 1 / 7
 
-heart4 = display.newImageRect("Images/heart.png", 100, 100)
-heart4.x = display.contentWidth * 4 / 8
-heart4.y = display.contentHeight * 1 / 7
-
 clockText = display.newText("", 90, 200, nil, 50)
 clockText:setTextColor(255/255, 255/255, 255/255)
 clockText.xScale = 2
 clockText.yScale = 2
 
 gameOver = display.newImageRect("Images/gameOver.png", 1350, 900)
-gameOver.x = 515
+gameOver.x = display.contentCenterX
 gameOver.y = 400
 gameOver.isVisible = false
 
+win = display.newImageRect("Images/win.png", 1150,875)
+win.x = display.contentCenterX - 20
+win.y = 415
+win.isVisible = false
 
 -- Add the event listener for numeric fiel
 numericField:addEventListener("userInput", NumericFieldListener)
