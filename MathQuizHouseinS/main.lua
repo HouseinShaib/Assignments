@@ -193,6 +193,7 @@ local function NumericFieldListener(event)
 				incorrectObject.isVisible = true
 				secondsLeft = totalSeconds
 				timer.performWithDelay(2500, HideIncorrect)
+				incorrectObject.text = ("Incorrect, the answer was " .. correctAnswer)
 			end
 		numericField.text = ""	
 	end
@@ -220,7 +221,7 @@ correctObject:setTextColor(0/255, 0/255, 0/255)
 correctObject.isVisible = false
 
 -- Create the incorrect text object and make it invisible
-incorrectObject = display.text("Incorrect, the answer was" .. correctAnswer --, display.contentWidth/2, display.contentHeight/3, nil, 55)
+incorrectObject = display.newText("",display.contentWidth/2, display.contentHeight/3, nil, 55)
 incorrectObject:setTextColor(150/255, 0/255, 255/255)
 incorrectObject.isVisible = false
 
