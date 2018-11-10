@@ -93,7 +93,8 @@ local function AskQuestion()
 			questionObject.yScale = 2
 			print(correctAnswer)
 		if (correctAnswer < 1) then
-			correctAnswer = math.floor(randomNumber2/randomNumber1 * mult + 0.5) / mult		questionObject.text = (randomNumber2 .. "/" .. randomNumber1 .. "=")
+			correctAnswer = math.floor(randomNumber2/randomNumber1 * mult + 0.5) / mult	
+			questionObject.text = (randomNumber2 .. "/" .. randomNumber1 .. "=")
 			questionObject.xScale = 2
 			questionObject.yScale = 2
 			print(correctAnswer)
@@ -265,7 +266,7 @@ win.x = display.contentCenterX - 20
 win.y = 415
 win.isVisible = false
 
--- Add the event listener for numeric fiel
+-- Add the event listener for numeric field
 numericField:addEventListener("userInput", NumericFieldListener)
 
 -----------------------------------------------------------------------------------------
@@ -275,4 +276,3 @@ numericField:addEventListener("userInput", NumericFieldListener)
 -- Call the function to ask the question
 AskQuestion()
 StartTimer()
-UpdateTime()
