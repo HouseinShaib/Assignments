@@ -8,8 +8,6 @@
 -- Hides the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
--- Global variables
-scrollSpeedCompanyLogo = 7
 
 -- Creates "woosh" Sound
 local woosh = audio.loadSound("Sounds/companyLogoSound.mp3")
@@ -17,6 +15,7 @@ local wooshChannel
 
 -- Displays the company logo
 local companyLogo = display.newImageRect("Images/CompanyLogoHouseinS@2x.png", 1024, 769)
+local scrollSpeedCompanyLogo = 7
 companyLogo.x = display.contentCenterX
 companyLogo.y = -display.contentHeight*1.1
 
