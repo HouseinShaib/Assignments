@@ -25,7 +25,7 @@ local function PlaySound()
 	wooshChannel = audio.play(woosh)
 end
 
-timer.performWithDelay(1167, PlaySound)
+timer.performWithDelay(1797, PlaySound)
 
 -- Function: MoveLogo
 -- Input: This function accepts an event listener
