@@ -35,7 +35,7 @@ local backButton
 
 -- Creating Transitioning Function back to main menu
 local function BackTransition( )
-    composer.gotoScene( "main_menu", {effect = "slideRight", time = 500})
+    composer.gotoScene( "main_menu", {effect = "slideUp", time = 500})
 end
 
 
@@ -74,16 +74,16 @@ function scene:create( event )
     backButton = widget.newButton( 
     {
         -- Setting Position
-        x = display.contentWidth*1/8,
-        y = display.contentHeight*15/16,
+        x = 100,
+        y = 700,
 
         -- Setting Dimensions
-        -- width = 1000,
-        -- height = 106,
+        width = 200,
+        height = 150,
 
         -- Setting Visual Properties
-        defaultFile = "Images/Back Button Unpressed.png",
-        overFile = "Images/Back Button Pressed.png",
+        defaultFile = "Images/BackButtonUnpressedHouseinShaib@2x.png",
+        overFile = "Images/BackButtomPressedHouseinShaib@2x.png",
 
         -- Setting Functional Properties
         onRelease = BackTransition

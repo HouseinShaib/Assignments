@@ -54,7 +54,7 @@ function scene:create( event )
     -----------------------------------------------------------------------------------------
 
     -- Insert the background image and set it to the center of the screen
-    bkg_image = display.newImageRect("Images/Credits Screen.png", display.contentWidth, display.contentHeight)
+    bkg_image = display.newImageRect("Images/Instructions Screen.png", display.contentWidth, display.contentHeight)
     bkg_image.x = display.contentCenterX
     bkg_image.y = display.contentCenterY
     bkg_image.width = display.contentWidth
@@ -74,16 +74,16 @@ function scene:create( event )
     backButton = widget.newButton( 
     {
         -- Setting Position
-        x = display.contentWidth*1/8,
-        y = display.contentHeight*15/16,
+        x = 100,
+        y = 700,
 
         -- Setting Dimensions
-        -- width = 1000,
-        -- height = 106,
+        width = 200,
+        height = 150,
 
         -- Setting Visual Properties
-        defaultFile = "Images/Back Button Unpressed.png",
-        overFile = "Images/Back Button Pressed.png",
+        defaultFile = "Images/BackButtonUnpressedHouseinShaib@2x.png",
+        overFile = "Images/BackButtomPressedHouseinShaib@2x.png",
 
         -- Setting Functional Properties
         onRelease = BackTransition
