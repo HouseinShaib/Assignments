@@ -1,8 +1,8 @@
 -----------------------------------------------------------------------------------------
 --
 -- level1_screen.lua
--- Created by: Your Name
--- Date: Month Day, Year
+-- Created by: Housein Shaib
+-- Date: 11/29/2018
 -- Description: This is the level 1 screen of the game.
 -----------------------------------------------------------------------------------------
 

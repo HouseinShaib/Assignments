@@ -1,8 +1,8 @@
 -----------------------------------------------------------------------------------------
 --
 -- main_menu.lua
--- Created by: Your Name
--- Date: Month Day, Year
+-- Created by: Housein Shaib
+-- Date: 11/29/2018
 -- Description: This is the main menu, displaying the credits, instructions & play buttons.
 -----------------------------------------------------------------------------------------
 
@@ -38,6 +38,12 @@ local creditsButton
 local instructionsButton
 
 -----------------------------------------------------------------------------------------
+-- SOUNDS
+-----------------------------------------------------------------------------------------
+local backgroundMusicMain = audio.loadSound("Sounds/backgroundMain.mp3")
+local backgroundMusicMainChannel
+
+-----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
 
@@ -45,8 +51,6 @@ local instructionsButton
 local function CreditsTransition( )       
     composer.gotoScene( "credits_screen", {effect = "slideDown", time = 500})
 end 
-
------------------------------------------------------------------------------------------
 
 -- Creating Transition to Level1 Screen
 local function Level1ScreenTransition( )
@@ -57,6 +61,14 @@ end
 local function InstructionsTransition( )       
     composer.gotoScene( "instructions_screen", {effect = "slideDown", time = 500})
 end 
+
+-- Creating music loop
+local function BackgroundMusicMainLoop()
+    backgroundMusicMainChannel = audio.play(backgroundMusicMain)
+    timer.performWithDelay(BackgroundMusicMainLoop, 164000)
+end
+
+BackgroundMusicMainLoop()
 
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
@@ -142,15 +154,12 @@ function scene:create( event )
             -- When the button is released, call the Credits transition function
             onRelease = InstructionsTransition
         } ) 
-
     -----------------------------------------------------------------------------------------
 
     -- Associating button widgets with this scene
     sceneGroup:insert( playButton )
     sceneGroup:insert( creditsButton )
     sceneGroup:insert( instructionsButton )
-    
-    -- INSERT INSTRUCTIONS BUTTON INTO SCENE GROUP
 
 end -- function scene:create( event )   
 
